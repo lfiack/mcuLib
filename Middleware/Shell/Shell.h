@@ -30,6 +30,12 @@ struct hShellStruct;
 typedef uint8_t (* ShellTransmitCb_t)(char * pData, uint16_t Size);
 typedef int (* ShellFuncPtr_t)(struct hShellStruct * hShell, int argc, char ** argv);
 
+/**
+ * @brief Structure to connect a function pointer to a character and a description
+ *
+ * Contains 3 informations : a character, a function pointer and a description
+ * It allows to find a function thanks to its registered character.
+ */
 typedef struct ShellFunc{
 	char c;
 	ShellFuncPtr_t func;
@@ -46,6 +52,13 @@ typedef struct hShellStruct{
 	uint8_t arrowPending;
 } hShell_t;
 
+/**
+ * @brief Initialises the Shell driver
+ *
+ * @param hShell is the driver structure
+ * @param transmitCb is the function used by the Shell to transmit characters
+ * @return 0 if successful
+ */
 uint8_t ShellInit(hShell_t * hShell, ShellTransmitCb_t transmitCb);
 uint8_t ShellAdd(hShell_t * hShell, char c, ShellFuncPtr_t pFunc, char * description);
 uint8_t ShellProcess(hShell_t * hShell, char c);
