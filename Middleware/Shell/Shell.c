@@ -1,12 +1,16 @@
-/*
- * shell.c
+/** 
+ * @file Shell.c
+ * @author Laurent Fiack
+ * @brief A simple shell to call functions from a remote serial console
  *
- *  Created on: 7 juin 2019
- *      Author: Laurent Fiack
+ * # How to use this driver
+ *
+ * - Just try typing stuff!
  */
 
 #include "Shell.h"
 #include <stdio.h>
+
 
 int shHelp(hShell_t * hShell, int argc, char ** argv) {
 	int i;
@@ -40,6 +44,13 @@ uint8_t isSpace(char c) {
 	}
 }
 
+/**
+ * @brief Initialises the Shell driver
+ *
+ * @param hShell      Shell handle
+ * @param transmitCb  Function to be called when character has to be called
+ * @retval Status (0 if successful)
+ */
 uint8_t ShellInit(hShell_t * hShell, ShellTransmitCb_t transmitCb) {
 	if (hShell == NULL) {
 		return 255;

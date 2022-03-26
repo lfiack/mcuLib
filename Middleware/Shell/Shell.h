@@ -52,13 +52,6 @@ typedef struct hShellStruct{
 	uint8_t arrowPending;
 } hShell_t;
 
-/**
- * @brief Initialises the Shell driver
- *
- * @param hShell is the driver structure
- * @param transmitCb is the function used by the Shell to transmit characters
- * @return 0 if successful
- */
 uint8_t ShellInit(hShell_t * hShell, ShellTransmitCb_t transmitCb);
 uint8_t ShellAdd(hShell_t * hShell, char c, ShellFuncPtr_t pFunc, char * description);
 uint8_t ShellProcess(hShell_t * hShell, char c);
