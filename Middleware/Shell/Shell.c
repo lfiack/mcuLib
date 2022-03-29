@@ -140,6 +140,9 @@ uint8_t ShellProcess(hShell_t * hShell, char c) {
 			hShell->transmitCb(hShell->cmdLineBuffer, hShell->cmdLinePosition);
 			hShell->transmitCb("\r\n", 2);
 
+			// Add zero char to be used with newlib functions
+			hShell->cmdLineBuffer[hShell->cmdLinePosition] = '\0';
+
 			ShellExec(hShell);
 
 			hShell->cmdLinePosition = 0;            //reset buffer
